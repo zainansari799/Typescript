@@ -1,0 +1,89 @@
+1. Typescript is strongly typed language. If you define type string at specific variable, then this var is string type.
+
+2.Type-Inference:
+If you assign number in specific variable,then this var is number type,you can not assign any other type in this variable.
+
+3.const variable:
+use const where veriable values do not change.
+
+4.let is used for block scoping.
+
+e.g.
+let z=0;
+if (true) {
+	var z = 4;
+	//use z
+}
+else {
+	var z = "string";
+	//use z
+}
+console.log("let: " + z);//ans is 4,Error: z is not defined in this scope
+
+
+5.Arrays:
+let array1 : number[] = [5, 6, 7]; //correct syntax
+let array2:Array<number> = [1, 2, 3];//alternative correct syntax
+let array3 : number[] = [];//correct syntax to define an empty array
+
+//let array4: number[] = new number[2];//error
+
+let array5: number[] = []; //this is empty array
+array5.push(1,2,3,4); //dynamically adding
+console.log(array5[1]);
+
+
+6.Any Type:
+If you define any type to any variable, then you can assign multiple type to this variable.
+If you define any type to any variable, then you can assign or reduce a property from object.
+
+
+7.Explicit Casting:
+
+let myType = <any> { name: "Zia", id: 1 };
+let myType1 = { name: "Zia", id: 1 } as any;//this is an alternative syntax for casting
+let b = a as string;//Error
+
+8.Enums:
+An enumeration is a collection/list of numeric value constants which has different meaningful human readable names/identifiers and it is created by a keyword “enum”.
+It defines the state of object property.
+It also returns property against index no.
+
+e.g. enum Color {
+	Red, Green, Blue
+};  //starts with 0
+var c: Color = Color.Green;
+console.log(c); // ans is 1.
+
+
+enum Color1 {
+	Red = 1, Green, Blue
+};
+var colorName: string = Color1[2]; //it is string type because it returns the staten and it is string type
+console.log(colorName); //ans is Green
+
+
+enum Color2 {Red = 1, Green = 2, Blue = 4}; //can assign values to all
+
+var colorIndex = Color2[3]; 
+console.log(colorIndex); // ans is undefined
+
+var colorIndex1 = Color2["Blue"]; // ans is 4
+console.log(colorIndex1); // ans is 4
+
+
+
+9.Const Enums:
+The const enum members can not be accessed through their numeric values such as ConstEnumName[0],
+ they only be accessed using string literals such as ConstEnumName[“NamedValue”].
+
+but it can access like this:
+
+const enum Color2 {Red = 1, Green = 2, Blue = 4};//can assign values to all
+var colorIndex = Color2["Blue"];
+console.log(colorIndex);
+
+
+10. Optional Parameter:
+In optional parameter, if you declare 3 params and the 3rd para is optional.
+Then if you return only 2 para, it will be correct because 3rd para is optional. 
