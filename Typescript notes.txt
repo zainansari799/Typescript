@@ -1,0 +1,244 @@
+1. Typescript is strongly typed language. If you define type string at specific variable, then this var is string type.
+
+2.Type-Inference:
+If you assign number in specific variable,then this var is number type,you can not assign any other type in this variable.
+
+3.const variable:
+use const where variable values do not change.
+
+4.let is used for block scoping.
+
+e.g.
+let z=0;
+if (true) {
+	var z = 4;
+	//use z
+}
+else {
+	var z = "string";
+	//use z
+}
+console.log("let: " + z);//ans is 4,Error: z is not defined in this scope
+
+
+5.Arrays:
+let array1 : number[] = [5, 6, 7]; //correct syntax
+let array2:Array<number> = [1, 2, 3];//alternative correct syntax
+let array3 : number[] = [];//correct syntax to define an empty array
+
+//let array4: number[] = new number[2];//error
+
+let array5: number[] = []; //this is empty array
+array5.push(1,2,3,4); //dynamically adding
+console.log(array5[1]); //ans is 2
+
+
+6.Any Type:
+If you define any type to any variable, then you can assign multiple type to this variable.
+If you define any type to any variable, then you can assign or reduce a property from object.
+
+
+7.Explicit Casting:
+
+let myType = <any> { name: "Zia", id: 1 };
+let myType1 = { name: "Zia", id: 1 } as any;//this is an alternative syntax for casting
+-----------------------------------
+let b = a as string;//Error
+-----------------------------------
+
+8.Enums:
+An enumeration is a collection/list of numeric value constants which has different meaningful human readable names/identifiers and it is created by a keyword “enum”.
+It defines the state of object property.
+It also returns property against index no.
+
+e.g. enum Color {
+	Red, Green, Blue
+};  //starts with 0
+var c: Color = Color.Green;
+console.log(c); // ans is 1.
+
+
+enum Color1 {
+	Red = 1, Green, Blue
+};
+var colorName: string = Color1[2]; //it is string type because it returns the state and it is string.
+console.log(colorName); //ans is Green
+
+
+enum Color2 {Red = 1, Green = 2, Blue = 4}; //can assign values to all
+
+var colorIndex = Color2[3]; 
+console.log(colorIndex); // ans is undefined
+
+var colorIndex1 = Color2["Blue"]; 
+console.log(colorIndex1); // ans is 4
+
+
+
+9.Const Enums:
+The const enum members can not be accessed through their numeric values such as ConstEnumName[0],
+ they only be accessed using string literals such as ConstEnumName[“NamedValue”].
+
+but it can access like this:
+
+const enum Color2 {Red = 1, Green = 2, Blue = 4};//can assign values to all
+var colorIndex = Color2["Blue"];
+console.log(colorIndex);
+
+
+10. Optional Parameter:
+In optional parameter, if you declare 3 params and the 3rd para is optional.
+Then if you return only 2 para, it will be correct because 3rd para is optional. 
+
+
+11. Default Parameter:
+In default parameter, we add a default parameter if you not assign the value in this parameter.
+The default value is assign on that parameter.
+
+12.Rest Parameter:
+The rest parameter is an array which receives the arguments, store them into index order (start from 0) and access them through a loop.
+
+//Note: Rest, optional and default parameters can only be at the end of the parameter list
+
+
+13.Lambda Expression:
+var add = (a: number, b: number) => {
+    return a + b;
+}
+console.log(add);
+
+
+
+var add1 = (x: number, y: number) => (x + y);
+console.log(add1);
+//output var add1 = function(x, y){return x + y};
+
+
+
+var myFunction = f => { this.x = "x"; }//automatically creating the that-equals-this pattern
+console.log(myFunction);
+/*
+When compiled, TypeScript automatically makes sure this points to my class instead of the enclosed function:
+var _this = this;
+var myFunction = function(f) { _this.x = "x"; };
+*/											
+
+
+14.Callback Function:
+
+A callback function is a function which is passed from another function as its parameter.
+A callback function is passed from a normal function as an argument in order to invoke it.
+
+
+
+15.OverLoaded Function:
+
+Multiple functions with the same name can be defined in TypeScript and that process is called overloaded functions.
+In function overloading process, we can define multiple functions with the same name but their parameter-list might be different from each other by number, data types and sequence and their return type also would be different from each other.
+
+Note: At the end of overloaded functions, another function with the same name must be defined with its body/implementation and it must be marked with “any” as its return type.
+
+
+16. Union Type:
+
+In union type, you can define multiple types(e.g number,string,boolean) in single variable. 
+
+e.g. var a: string | number | boolean;
+
+
+/*Note on Type Guards:
+A common pattern in JavaScript is to use "typeof" or "instanceof" to examine the type of an expression at runtime. 
+TypeScript now understands these conditions and will change type inference accordingly when used in an if block.
+This is called a type guard.
+
+
+
+17. Type Aliases:
+
+In type aliases, you can define multiple types with "type" keyword and this type is assign in a variable. So, that variable use these types.
+
+e.g
+type StringNumberOrBoolean = string | number | boolean;
+type PrimitiveArray = Array<string|number|boolean>;
+type MyNumber = number;
+
+18.Tuples:
+Tuple types have the advantage that you can accurately describe the type of an array of mixed types at specific index no.
+
+
+
+
+****************************************************************************************************************************************************************************
+
+19.a. Classes and Objects:
+
+A class just is a template, the blue print, the definition, the logical abstraction, an idea that only defines the form of an object.Example of classes (Mark sheet, User, Bank account, Button, Date, Media player etc.). 
+It is like a wrapper which defines the attributes and behavior inside it. 
+
+The object is a thing which is a real creation or implementation of a class (means physical creation of a class), which has physical existence.
+It is an instance of a class.
+
+The duck typing concept is also apply on classes and object.
+
+In typescript, 
+min properties of class object=max properties of class object  //Allowed  
+max properties of class object=min properties of class object  //Not Allowed
+
+19.b,c. Classes Duck typing:
+
+Private members are only accessible within their declaring class.
+Protected members are only accessible within their declaring class and classes derived from it.
+Public members can be accessed anywhere.
+A class is a user defined type.
+
+
+20.a. Inheritance:
+
+In TypeScript only multilevel inheritance is supported which means we can inherits only one base class for derived class at a time and cannot inherits more than one/multiple base classes into a single derived class at a time.
+Derived class must have same properties as base class
+
+If you inherit child class to base class, then you should include the base class's property in child class with "super" keyword.
+
+
+20.b. Abstract Class:
+
+In programming languages, an abstract class is a generic class (or type of object) used as a basis for creating specific objects that conform to its protocol, or the set of operations it supports. Abstract classes are not instantiated directly. 
+
+Abstract classes are useful when creating hierarchies of classes that model reality because they make it possible to specify an invariant level of functionality in some methods, 
+but leave the implementation of other methods until a specific implementation of that class (a derived class) is needed.
+
+We can not create instance of abstract class.
+
+20.c. Constructors:
+
+It is a special type of function which has no return type even void.
+It can be declared with a “constructor” keyword.
+It is called from outside the class.
+In TypeScript, multiple constructors are not allowed in a class.	
+Multiple supper call working.
+A constructor is called automatically when we create an object of a class.
+
+24.Acessors:
+
+Encapsulation is the packing of data and functions into a single component. 
+It allows selective hiding of properties and methods in an object by building an impenetrable wall to protect the code from accidental corruption.
+
+
+Interfaces:
+
+An Interface defines the term “what a class must do”. It enforces to the class to complete the uncompleted behavior (functions) and attributes (properties).
+An object of the interface cannot be created.
+An interface defines the shape of our class or object.
+There are no any complete function can be declared in an interface.
+One interface can be implemented by any number of classes and also one class can implements any number of interfaces at once separated by commas.
+Static member can not declare in interface.
+
+If a class implements an interface, it must have the properties as declare in an interface.
+But class can add a property in it.
+																
+
+Static Property:
+
+Whenever you want to access methods of a class (but the method of the class is not static), then it is necessary to create an object of that class. 
+But if the static keyword is used with a member function (method), that method is automatically invoked without creating an object of the class.
+You just invoke that method using the class name .(dot) method name.
